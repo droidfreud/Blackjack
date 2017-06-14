@@ -2,84 +2,33 @@
 <html>
 <head>
 	<title>Black Jack</title>
-	<style type="text/css">
-		body{
-			background-image: url("table.png");
-		}
-		#header{
-			color: white;
-			text-align: center;
-			font-variant: small-caps;
-			font-size: 300%;
-		}
-		img{
-			height: 150px;
-			width: 100px;
-		}
-		#PlayerName{
-			font-style: bold;
-			color: white;
-			font-size: 200%;
-		}
-		#container1{
-			padding-left: 10px;
-			width: 420px;
-			float: left;
-		}
-		#container2{
-			width: 420px;
-			float: right;
-		}
-		#button_section{
-			width: 400px;
-			margin-top: 0;
-			display: inline-block;
-		}
-		button {
-			display: block;
-    		margin: 0 auto;
-    		background-color: #4CAF50; /* Green */
-    		border: none;
-    		border-radius: 10px;
-    		color: white;
-    		padding: 15px 32px;
-    		text-align: center;
-    		text-decoration: none;
-    		font-size: 16px;
-		}
-		button:hover {
-    		box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-		}
-		button:focus {
-			outline:0;
-		}
-		#winner{
-			font-size: 200%;
-			color:white;
-			text-align: center;
-		}
-	</style>
-	
+	<script type="text/javascript" src="BJ.js"></script>
+	<link rel="stylesheet" type="text/css" href="BJSTY.css"></link>	
 </head>
 <body>
 	<div id="header">
-		<div>Lets play Black Jack</div>
+		<div id="bla">Lets play Black Jack</div>
+	</div>
+	<div id="input">
+		<form id="my_form">
+			Enter your bet : <input type="text" name="firstname" >
+		</form>
 	</div>
 	<div id="container1">
 		<div id="PlayerName">Player</div>
 		<div id="content1">
-			<img src="" id="img2">
-			<img src="" id="img3">
-			<img src="" id="img4">
-			<img src="" id="img5">
-			<img src="" id="img6">
-			<img src="" id="img7">
-			<img src="" id="img8">
-			<img src="" id="img9">
-			<img src="" id="img10">
-			<img src="" id="img11">
-			<img src="" id="img12">
-			<img src="" id="img13">
+			<img src="back.jpg" id="img2">
+			<img src="back.jpg" id="img3">
+			<img src="back.jpg" id="img4">
+			<img src="back.jpg" id="img5">
+			<img src="back.jpg" id="img6">
+			<img src="back.jpg" id="img7">
+			<img src="back.jpg" id="img8">
+			<img src="back.jpg" id="img9">
+			<img src="back.jpg" id="img10">
+			<img src="back.jpg" id="img11">
+			<img src="back.jpg" id="img12">
+			<img src="back.jpg" id="img13">
 		</div>
 	</div>
 	<span id="button_section">
@@ -90,7 +39,7 @@
 		<br>
 		<button id="stand" onclick="f2()">Stand</button>
 		<br>
-		<button id="double">Double</button>
+		<button id="double" onclick="f0()">Double</button>
 		<br>
 		<button id="split">Split</button>
 		<br>
@@ -101,258 +50,22 @@
 	<div id="container2">
 		<div id="PlayerName">Dealer</div>
 		<div id="content2">
-			<img src="" id="img2d">
-			<img src="" id="img3d">
-			<img src="" id="img4d">
-			<img src="" id="img5d">
-			<img src="" id="img6d">
-			<img src="" id="img7d">
-			<img src="" id="img8d">
-			<img src="" id="img9d">
-			<img src="" id="img10d">
-			<img src="" id="img11d">
-			<img src="" id="img12d">
-			<img src="" id="img13d">
+			<img src="back.jpg" id="img2d">
+			<img src="back.jpg" id="img3d">
+			<img src="back.jpg" id="img4d">
+			<img src="back.jpg" id="img5d">
+			<img src="back.jpg" id="img6d">
+			<img src="back.jpg" id="img7d">
+			<img src="back.jpg" id="img8d">
+			<img src="back.jpg" id="img9d">
+			<img src="back.jpg" id="img10d">
+			<img src="back.jpg" id="img11d">
+			<img src="back.jpg" id="img12d">
+			<img src="back.jpg" id="img13d">
 		</div>
 	</div>
 	<br>
 	<br>
-	<div id="winner">
-		The winner is: 
-	</div>
+	<div id="winner"></div>
 </body>
-<script type="text/javascript">
-	var i=2,sum1=0,sum2=0;
-	function f1(){
-	//	for (var i = 2; i <=13 ; i++) {
-			var id1,id2,categ1,categ2;
-			id1 = Math.floor(Math.random()*4+1);
-			id2 = Math.floor(Math.random()*12)+2;
-			if(id1 == 1){
-				categ1 = "c";
-				categ2 = "clubs";
-			}
-			else if(id1 == 2){
-				categ1 = "s";
-				categ2 = "spades";
-			}
-			else if(id1 == 3){
-				categ1 = "h";
-				categ2 = "hearts";
-			}
-			else if(id1 == 4){
-				categ1 = "d";
-				categ2 = "diamonds";
-			}
-			if(id2>9){
-				if(id2 == 10){
-					document.getElementById("img"+i).src="myCards/jack_of_"+categ2+".png";
-					sum1 += 10;
-				}
-				else if(id2==11){
-					document.getElementById("img"+i).src="myCards/king_of_"+categ2+".png";
-					sum1 += 10;
-				}
-				else if(id2==12){
-					document.getElementById("img"+i).src="myCards/queen_of_"+categ2+".png";
-					sum1 += 10;
-				}
-				else if(id2==13){
-					document.getElementById("img"+i).src="myCards/ace_of_"+categ2+".png";
-					sum1 += 11;
-				}
-			}
-			else{
-				document.getElementById("img"+i).src="myCards/"+ id2 +"_of_"+categ2+".png";
-				sum1 += id2;
-			}
-
-			id1 = Math.floor(Math.random()*4+1);
-			id2 = Math.floor(Math.random()*12)+2;
-			if(id1 == 1){
-				categ1 = "c";
-				categ2 = "clubs";
-			}
-			else if(id1 == 2){
-				categ1 = "s";
-				categ2 = "spades";
-			}
-			else if(id1 == 3){
-				categ1 = "h";
-				categ2 = "hearts";
-			}
-			else if(id1 == 4){
-				categ1 = "d";
-				categ2 = "diamonds";
-			}
-			if(id2>9){
-				if(id2 == 10){
-					document.getElementById("img"+i+"d").src="myCards/jack_of_"+categ2+".png";
-					sum2 += 10;
-				}
-				else if(id2==11){
-					document.getElementById("img"+i+"d").src="myCards/king_of_"+categ2+".png";
-					sum2 += 10;
-				}
-				else if(id2==12){
-					document.getElementById("img"+i+"d").src="myCards/queen_of_"+categ2+".png";
-					sum2 += 10;
-				}
-				else if(id2==13){
-					document.getElementById("img"+i+"d").src="myCards/ace_of_"+categ2+".png";
-					sum2 += 11;
-				}
-			}
-			else{
-				document.getElementById("img"+i+"d").src="myCards/"+ id2 +"_of_"+categ2+".png";
-				sum2 += id2;
-			}
-			if(sum1==21){
-				document.getElementById("winner").innerHTML+= "Player";	
-				sum1=0;
-				sum2=0;
-			}
-			else if(sum2==21){
-				document.getElementById("winner").innerHTML+= "Dealer";	
-				sum1=0;
-				sum2=0;
-			}
-			else{
-				if(sum1>21){
-					document.getElementById("winner").innerHTML+= "Dealer";	
-					sum1=0;
-					sum2=0;
-				}
-				else if(sum2>21){
-					document.getElementById("winner").innerHTML+= "Player";	
-					sum1=0;
-					sum2=0;
-				}
-			}
-			if(sum1==0 && sum2==0){
-				document.getElementById("winner").innerHTML+= "<br>Click Reset to play again";
-				document.getElementById("hit").disabled = true;
-				document.getElementById("stand").disabled = true;
-				document.getElementById("double").disabled = true;
-				document.getElementById("split").disabled = true;
-				document.getElementById("surrender").disabled = true;
-			}
-			i++;
-	//	}
-	}
-	function reset(){
-		document.getElementById("hit").disabled = false;
-		document.getElementById("stand").disabled = false;
-		document.getElementById("double").disabled = false;
-		document.getElementById("split").disabled = false;
-		document.getElementById("surrender").disabled = false;
-		if(sum1==0 && sum2==0){
-			for(var k=2;k<=13;k++){
-				document.getElementById("img"+k).src="";
-				document.getElementById("img"+k+"d").src="";
-			}
-			i=2;
-			document.getElementById("winner").innerHTML = "The winner is: ";	
-		}
-	}
-	function f2(){
-		var id1,id2,j=i;
-		while(sum2<=17){	
-			id1 = Math.floor(Math.random()*4+1);
-			id2 = Math.floor(Math.random()*12)+2;
-			if(id1 == 1){
-				categ1 = "c";
-				categ2 = "clubs";
-			}
-			else if(id1 == 2){
-				categ1 = "s";
-				categ2 = "spades";
-			}
-			else if(id1 == 3){
-				categ1 = "h";
-				categ2 = "hearts";
-			}
-			else if(id1 == 4){
-				categ1 = "d";
-				categ2 = "diamonds";
-			}
-			if(id2>9){
-				if(id2 == 10){
-					document.getElementById("img"+j+"d").src="myCards/jack_of_"+categ2+".png";
-					sum2 += 10;
-				}
-				else if(id2==11){
-					document.getElementById("img"+j+"d").src="myCards/king_of_"+categ2+".png";
-					sum2 += 10;
-				}
-				else if(id2==12){
-					document.getElementById("img"+j+"d").src="myCards/queen_of_"+categ2+".png";
-					sum2 += 10;
-				}
-				else if(id2==13){
-					document.getElementById("img"+j+"d").src="myCards/ace_of_"+categ2+".png";
-					sum2 += 11;
-				}
-			}
-			else{
-				document.getElementById("img"+j+"d").src="myCards/"+ id2 +"_of_"+categ2+".png";
-				sum2 += id2;
-			}
-			j++;
-		}
-		if(sum1==21){
-			document.getElementById("winner").innerHTML+= "Player";	
-			sum1=0;
-			sum2=0;
-		}
-		else if(sum2==21){
-			document.getElementById("winner").innerHTML+= "Dealer";	
-			sum1=0;
-			sum2=0;
-		}
-		else{
-			if(sum1>21){
-				document.getElementById("winner").innerHTML+= "Dealer";	
-				sum1=0;
-				sum2=0;
-			}
-			else if(sum2>21){
-				document.getElementById("winner").innerHTML+= "Player";	
-				sum1=0;
-				sum2=0;
-			}
-			else{
-				if(sum1>sum2){
-					document.getElementById("winner").innerHTML+= "Player";	
-					sum1=0;
-					sum2=0;
-				}
-				else{
-					document.getElementById("winner").innerHTML+= "Dealer";	
-					sum1=0;
-					sum2=0;
-				}
-			}
-		}
-			if(sum1==0 && sum2==0){
-				document.getElementById("winner").innerHTML+= "<br>Click Reset to play again";
-				document.getElementById("hit").disabled = true;
-				document.getElementById("stand").disabled = true;
-				document.getElementById("double").disabled = true;
-				document.getElementById("split").disabled = true;
-				document.getElementById("surrender").disabled = true;
-			}
-	}
-	function f5(){
-		document.getElementById("winner").innerHTML+= "Dealer";	
-		sum1=0;
-		sum2=0;
-		document.getElementById("winner").innerHTML+= "<br>Click Reset to play again";
-		document.getElementById("hit").disabled = true;
-		document.getElementById("stand").disabled = true;
-		document.getElementById("double").disabled = true;
-		document.getElementById("split").disabled = true;
-		document.getElementById("surrender").disabled = true;
-	}
-</script>
 </html>
